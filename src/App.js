@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import './App.css';
+//import './App.css';
 
 class App extends Component {
 
@@ -43,14 +43,14 @@ class App extends Component {
             isAuthenticated() && (
               <div>
                 <Button
-
+                    onClick={this.goTo.bind(this, 'kba')}
                     style={{ cursor: "pointer" }}
                   >
                     Process a customer
                   </Button>
 
                   <Button
-                    onClick={this.goTo.bind(this, 'profile')}
+                    
                     style={{ cursor: "pointer" }}
                   >
                     Profile - coming soon

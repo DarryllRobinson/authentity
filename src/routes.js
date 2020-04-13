@@ -6,6 +6,7 @@ import App from './App';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
+import Kba from './KBA/Kba';
 
 
 const auth = new Auth();
@@ -21,6 +22,7 @@ export const makeMainRoutes = () => {
       <Router history={history}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
+          <Route path="/kba" render={(props) => <Kba auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} />
