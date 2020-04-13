@@ -9,6 +9,10 @@ class KbaForm extends Component {
       mobile: '',
       errormessage: ''
     }
+
+    this.changeHandler = this.changeHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+
   }
 
   changeHandler = (event) => {
@@ -37,10 +41,29 @@ class KbaForm extends Component {
           <li>Mobile number <input type="text" name="mobile" onChange={this.changeHandler}/>{this.state.errormessage}</li>
         </ul>
 
-        <input type="submit" />
+        <input type="submit" value="Submit" />
       </form>
     )
   }
+
 }
 
 export default KbaForm;
+
+/*
+render() {
+  return (
+    <form onSubmit={this.submitHandler}>
+      <fieldset>
+        <legend>First name </legend>
+        <input type="text" name="firstname" onChange={this.changeHandler}/>
+      </fieldset>
+      <fieldset>
+        <legend>Surname </legend>
+        <input type="text" name="surname" onChange={this.changeHandler}/>
+      </fieldset>
+
+    </form>
+  )
+}
+*/
