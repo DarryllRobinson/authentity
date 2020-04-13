@@ -35,11 +35,23 @@ class KbaForm extends Component {
   render() {
     return (
       <form onSubmit={this.submitHandler}>
-        <ul style={{ listStyleType: "none" }}>
-          <li>First name <input type="text" name="firstname" onChange={this.changeHandler}/></li>
-          <li>Surname <input type="text" name="surname" onChange={this.changeHandler}/></li>
-          <li>Mobile number <input type="text" name="mobile" onChange={this.changeHandler}/>{this.state.errormessage}</li>
-        </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Please enter the following</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First name</td><td><input type="text" name="firstname" onChange={this.changeHandler}/></td>
+          </tr>
+          <tr>
+            <td>Surname</td><td><input type="text" name="surname" onChange={this.changeHandler}/></td>
+          </tr><tr>
+            <td>Mobile number</td><td><input type="text" name="mobile" onChange={this.changeHandler}/>{this.state.errormessage}</td>
+          </tr>
+        </tbody>
+      </table>
 
         <input type="submit" value="Submit" />
       </form>

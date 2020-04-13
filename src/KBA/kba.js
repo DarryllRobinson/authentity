@@ -15,9 +15,19 @@ class QuestionRow extends Component {
   }
 }
 
+/*function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}*/
+
 class QuestionTable extends Component {
   render() {
     const rows = [];
+    const display = true;
+    console.log('display: ', display);
 
     this.props.questions.forEach((question) => {
       rows.push(
@@ -28,18 +38,23 @@ class QuestionTable extends Component {
       );
     })
 
+    if (display) {
+      return (
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows}
+          </tbody>
+        </table>
+      );
+    }
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Question</th>
-            <th>Answer</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+      <div>Nothing to see here</div>
     );
   }
 }
@@ -47,14 +62,20 @@ class QuestionTable extends Component {
 class SearchBox extends Component {
   render() {
     return (
-      <KbaForm>
-        Please input all the fields below
-      </KbaForm>
+      <KbaForm />
     );
   }
 }
 
 class Kba extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      display: false
+    };
+  }
+
   render() {
     return (
       <div>
