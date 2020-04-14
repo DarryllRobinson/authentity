@@ -7,7 +7,8 @@ class KbaForm extends Component {
       firstname: '',
       surname: '',
       mobile: '',
-      errormessage: ''
+      errormessage: '',
+      submitted: false
     }
 
     this.changeHandler = this.changeHandler.bind(this);
@@ -30,9 +31,12 @@ class KbaForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
+    this.props.onDisplayChange(true);
+    this.setState({submitted: true});
   }
 
   render() {
+    const showSubmitButton = !this.state.submitted;
     return (
       <form onSubmit={this.submitHandler}>
       <table>
@@ -52,8 +56,9 @@ class KbaForm extends Component {
           </tr>
         </tbody>
       </table>
-
-        <input type="submit" value="Submit" />
+        {(showSubmitButton) && (
+          <input type="submit" value="Submit" />
+        )}
       </form>
     )
   }

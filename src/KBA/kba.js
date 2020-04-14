@@ -26,8 +26,7 @@ class QuestionRow extends Component {
 class QuestionTable extends Component {
   render() {
     const rows = [];
-    const display = true;
-    console.log('display: ', display);
+    const display = this.props.showQuestions;
 
     this.props.questions.forEach((question) => {
       rows.push(
@@ -54,15 +53,7 @@ class QuestionTable extends Component {
       );
     }
     return (
-      <div>Nothing to see here</div>
-    );
-  }
-}
-
-class SearchBox extends Component {
-  render() {
-    return (
-      <KbaForm />
+      <div></div>
     );
   }
 }
@@ -74,13 +65,26 @@ class Kba extends Component {
     this.state = {
       display: false
     };
+
+    this.handleDisplayChange = this.handleDisplayChange.bind(this);
+  }
+
+  handleDisplayChange(display) {
+    this.setState({
+      display: display
+    });
   }
 
   render() {
     return (
       <div>
-        <SearchBox />
-        <QuestionTable questions={this.props.questions} />
+        <KbaForm
+          onDisplayChange={this.handleDisplayChange}
+        />
+        <QuestionTable
+          questions={this.props.questions}
+          showQuestions={this.state.display}
+        />
       </div>
     );
   }
