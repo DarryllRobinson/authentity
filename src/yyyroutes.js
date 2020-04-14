@@ -18,7 +18,6 @@ const handleAuthentication = ({location}) => {
 
 export const makeMainRoutes = () => {
   console.log('IDEAL: ', IDEAL[0].ANSWERS[0].answer);
-
   return (
       <Router history={history}>
         <div>
@@ -27,7 +26,6 @@ export const makeMainRoutes = () => {
             questions={QUESTIONS}
             answers={ANSWERS}
             authset={AUTHSET}
-            ideal={IDEAL}
             />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
@@ -56,20 +54,12 @@ const QUESTIONS = [
 ];
 
 const ANSWERS = [
-  {authID: '1', answer: 'First answer1'},
-  {authID: '1', answer: 'Second answer1'},
-  {authID: '1', answer: 'Third answer1'},
-  {authID: '1', answer: 'Fourth answer1'},
-  {authID: '1', answer: 'Fifth answer1'}
+  {authID: '1', answer: 'First answer'},
+  {authID: '1', answer: 'Second answer'},
+  {authID: '1', answer: 'Third answer'},
+  {authID: '1', answer: 'Fourth answer'},
+  {authID: '1', answer: 'Fifth answer'}
 ];
-
-/*const ANSWERS2 = [
-  {authID: '2', answer: 'First answer2'},
-  {authID: '2', answer: 'Second answer2'},
-  {authID: '2', answer: 'Third answer2'},
-  {authID: '2', answer: 'Fourth answer2'},
-  {authID: '2', answer: 'Fifth answer2'}
-];*/
 
 const AUTHSET = [
   {authID: '1', question: 'Have you ever lived at 31 Shannan Place, Kenmore Hills, Brisbane?', answer1: 'Yes', answer2: 'No'},
@@ -77,6 +67,5 @@ const AUTHSET = [
 ];
 
 const IDEAL = [
-  {authID: '1', question: 'How old were you on your last birthday?', ANSWERS},
-  {authID: '2', question: 'How many legs do you have?', ANSWERS}
+  {authID: '1', question: 'How old were you on your last birthday?', ANSWERS}
 ];

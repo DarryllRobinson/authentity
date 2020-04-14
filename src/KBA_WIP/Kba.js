@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 import KbaForm from './KbaForm';
 
-class AnswerRow extends Component {
+/*class AnswerRow extends Component {
   render() {
     const rows = [];
 
     this.props.answers.forEach((answer) => {
       rows.push(
-        <option value={answer.answer} >{answer.answer}</option>
+        <option value={answer.answer} key={answer.answer}>{answer.answer}</option>
       );
-      console.log('rows: ', rows);
     })
 
     return (
       <select>
         <option value="missing">Please select</option>
-{rows}
+        {rows}
       </select>
     );
   }
-}
+}*/
 
 class QuestionRow extends Component {
   render() {
     const question = this.props.question;
-    const answer1 = this.props.answer1;
+    const answers = this.props.answer;
+
+    console.log('answers: ', answers);
 
     return (
       <tr>
         <td>{question}</td>
-        <td>{answer1}</td>
       </tr>
     );
   }
@@ -38,13 +38,16 @@ class QuestionRow extends Component {
 class QuestionTable extends Component {
   render() {
     const rows = [];
-    const display = this.props.showQuestions;
+    //const display = this.props.showQuestions;
+    const display = true;
 
-    this.props.questions.forEach((question) => {
+    console.log('KBA IDEAL: ', this.props.ideal);
+
+    this.props.ideal.forEach((question) => {
       rows.push(
         <QuestionRow
           question={question.question}
-          answer1={question.answer1}
+          answer={question.ANSWERS}
           key={question.authID} />
       );
     })
@@ -95,10 +98,8 @@ class Kba extends Component {
         />
         <QuestionTable
           questions={this.props.questions}
+          ideal={this.props.ideal}
           showQuestions={this.state.display}
-        />
-        <AnswerRow
-          answers={this.props.authset}
         />
       </div>
     );

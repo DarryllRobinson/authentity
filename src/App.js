@@ -22,21 +22,19 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-
-
           {
             !isAuthenticated() && (
               <div>
               <p>
                 Welcome to Authentity!
               </p>
-                      <Button
-                        onClick={this.login.bind(this)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        Log In
+                <Button
+                  onClick={this.login.bind(this)}
+                  style={{ cursor: "pointer" }}
+                >
+                  Log In
 
-                      </Button>
+                </Button>
               </div>
           )}
           {
@@ -50,7 +48,7 @@ class App extends Component {
                   </Button>
 
                   <Button
-                    
+
                     style={{ cursor: "pointer" }}
                   >
                     Profile - coming soon

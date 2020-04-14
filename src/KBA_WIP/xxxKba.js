@@ -7,15 +7,14 @@ class AnswerRow extends Component {
 
     this.props.answers.forEach((answer) => {
       rows.push(
-        <option value={answer.answer} >{answer.answer}</option>
+        <option value={answer.answer} key={answer.answer}>{answer.answer}</option>
       );
-      console.log('rows: ', rows);
     })
 
     return (
       <select>
         <option value="missing">Please select</option>
-{rows}
+        {rows}
       </select>
     );
   }
@@ -24,12 +23,10 @@ class AnswerRow extends Component {
 class QuestionRow extends Component {
   render() {
     const question = this.props.question;
-    const answer1 = this.props.answer1;
 
     return (
       <tr>
         <td>{question}</td>
-        <td>{answer1}</td>
       </tr>
     );
   }
@@ -38,13 +35,13 @@ class QuestionRow extends Component {
 class QuestionTable extends Component {
   render() {
     const rows = [];
-    const display = this.props.showQuestions;
+    //const display = this.props.showQuestions;
+    const display = true;
 
     this.props.questions.forEach((question) => {
       rows.push(
         <QuestionRow
           question={question.question}
-          answer1={question.answer1}
           key={question.authID} />
       );
     })
@@ -98,7 +95,7 @@ class Kba extends Component {
           showQuestions={this.state.display}
         />
         <AnswerRow
-          answers={this.props.authset}
+          answers={this.props.answers}
         />
       </div>
     );
