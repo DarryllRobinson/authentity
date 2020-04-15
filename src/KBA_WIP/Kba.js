@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import KbaForm from './KbaForm';
 
 class AnswerRow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answer: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({answer: event.target.value});
+  }
+
   render() {
     const rows = [];
 
@@ -12,7 +25,7 @@ class AnswerRow extends Component {
     })
 
     return (
-      <select>
+      <select value={this.state.answer} onChange={this.handleChange}>
         <option value="missing">Please select</option>
         {rows}
       </select>
@@ -24,8 +37,6 @@ class QuestionRow extends Component {
   render() {
     const question = this.props.question;
     const answers = this.props.answer;
-
-    console.log('answers: ', answers);
 
     return (
       <tr>
@@ -39,7 +50,8 @@ class QuestionRow extends Component {
 class QuestionTable extends Component {
   render() {
     const rows = [];
-    const display = this.props.showQuestions;
+    //const display = this.props.showQuestions;
+    const display = true;
 
     this.props.ideal.forEach((question) => {
       rows.push(

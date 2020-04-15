@@ -6,7 +6,7 @@ import App from './App';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import Kba from './KBA/Kba';
+import Kba from './KBA_WIP/Kba';
 
 const auth = new Auth();
 
