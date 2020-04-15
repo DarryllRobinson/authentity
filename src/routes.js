@@ -6,7 +6,7 @@ import App from './App';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import Kba from './KBA_WIP/Kba';
+import Kba from './KBA/Kba';
 
 const auth = new Auth();
 
@@ -17,7 +17,6 @@ const handleAuthentication = ({location}) => {
 }
 
 export const makeMainRoutes = () => {
-  console.log('IDEAL: ', IDEAL[0].ANSWERS[0].answer);
 
   return (
       <Router history={history}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import KbaForm from './KbaForm';
 
-/*class AnswerRow extends Component {
+class AnswerRow extends Component {
   render() {
     const rows = [];
 
@@ -18,7 +18,7 @@ import KbaForm from './KbaForm';
       </select>
     );
   }
-}*/
+}
 
 class QuestionRow extends Component {
   render() {
@@ -30,6 +30,7 @@ class QuestionRow extends Component {
     return (
       <tr>
         <td>{question}</td>
+        <td><AnswerRow answers={answers} /></td>
       </tr>
     );
   }
@@ -38,10 +39,7 @@ class QuestionRow extends Component {
 class QuestionTable extends Component {
   render() {
     const rows = [];
-    //const display = this.props.showQuestions;
-    const display = true;
-
-    console.log('KBA IDEAL: ', this.props.ideal);
+    const display = this.props.showQuestions;
 
     this.props.ideal.forEach((question) => {
       rows.push(
