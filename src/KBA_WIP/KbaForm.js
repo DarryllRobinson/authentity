@@ -31,7 +31,8 @@ class KbaForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onDisplayChange(true);
+    const clientID = '1';
+    this.props.onDisplayChange(true, clientID);
     this.setState({submitted: true});
   }
 
@@ -65,22 +66,8 @@ class KbaForm extends Component {
 
 }
 
+const BLOCK = [
+  {clientID: '1'}
+]
+
 export default KbaForm;
-
-/*
-render() {
-  return (
-    <form onSubmit={this.submitHandler}>
-      <fieldset>
-        <legend>First name </legend>
-        <input type="text" name="firstname" onChange={this.changeHandler}/>
-      </fieldset>
-      <fieldset>
-        <legend>Surname </legend>
-        <input type="text" name="surname" onChange={this.changeHandler}/>
-      </fieldset>
-
-    </form>
-  )
-}
-*/

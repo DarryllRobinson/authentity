@@ -89,17 +89,31 @@ class Kba extends Component {
     super(props);
 
     this.state = {
-      display: false
+      display: false,
+      clientID: ''
     };
 
     this.handleDisplayChange = this.handleDisplayChange.bind(this);
   }
 
-  handleDisplayChange(display) {
+  handleDisplayChange(display, clientID) {
     this.setState({
-      display: display
+      display: display,
+      clientID: clientID
+    }, () => {
+      //checkBlock(clientID);
     });
   }
+
+  /*this.setState({
+    someState: obj
+}, () => {
+    this.afterSetStateFinished();
+});*/
+
+ /*function checkBlock(clientID) {
+    return true;
+  }*/
 
   render() {
     return (
