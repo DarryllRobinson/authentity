@@ -33,7 +33,16 @@ class KbaForm extends Component {
     event.preventDefault();
     const clientID = '1';
     this.props.onDisplayChange(true, clientID);
-    this.setState({submitted: true});
+    this.setState({submitted: true}
+    , () => {
+      if (this.checkBlock) {
+        console.log('blocked');
+      }
+    });
+  }
+
+  checkBlock(clientID) {
+    return true;
   }
 
   render() {
@@ -65,9 +74,5 @@ class KbaForm extends Component {
   }
 
 }
-
-const BLOCK = [
-  {clientID: '1'}
-]
 
 export default KbaForm;
