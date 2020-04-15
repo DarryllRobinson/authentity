@@ -28,6 +28,7 @@ class AnswerRow extends Component {
       <select value={this.state.answer} onChange={this.handleChange}>
         <option value="missing">Please select</option>
         {rows}
+        <option value="none">None of the above</option>
       </select>
     );
   }

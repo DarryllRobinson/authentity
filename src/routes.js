@@ -22,12 +22,10 @@ export const makeMainRoutes = () => {
       <Router history={history}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/kba" render={(props) => <Kba auth={auth} {...props}
-            questions={QUESTIONS}
-            answers={ANSWERS}
-            authset={AUTHSET}
-            ideal={IDEAL}
-            />} />
+          <Route path="/kba" render={(props) => {
+            handleAuthentication(props);
+            return <Kba auth={auth} {...props} questions={QUESTIONS} answers={ANSWERS} authset={AUTHSET} ideal={IDEAL} />
+          }} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} />
