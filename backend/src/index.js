@@ -11,20 +11,22 @@ const jwksRsa = require('jwks-rsa');
 const app = express();
 
 // the database
-const questions = [];/*
+const questions = [
   {
+    "id": 1,
   "title": "How do I make a sandwich?",
   "description": "I am trying very hard, but I do not know how to make a delicious sandwich. Can someone help me?",
   "answers": "",
   "author": ""
 },
 {
+  "id": 2,
   "title": "What is React?",
   "description": "I have been hearing a lot about React. What is it?",
   "answers": "",
   "author": ""
 }
-];*/
+];
 
 // enhance your app security with Helmet
 app.use(helmet());
