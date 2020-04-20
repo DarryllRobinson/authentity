@@ -72,7 +72,10 @@ class KbaForm extends Component {
       </form>
     )
   }
-
 }
+
+const BLOCK = [
+  {clientID: '1'}
+]
 
 export default KbaForm;

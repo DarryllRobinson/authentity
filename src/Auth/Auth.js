@@ -45,6 +45,7 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('last_active', Date.now());
     history.replace('/');
   }
 
@@ -70,6 +71,17 @@ export default class Auth {
       throw new Error('No Access Token found');
     }
     return accessToken;
+  }
+
+  activeUser() {
+    let i = parseInt(localStorage.last_active)
+
+    return (
+      localStorage.last_active &&
+      (i + 3600000) >= Date.now() ?
+      localStorage.last_active = Date.now() :
+      false
+    )
   }
 
   getProfile(cb) {
