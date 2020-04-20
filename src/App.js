@@ -1,79 +1,40 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-//import './App.css';
+import NavBar from './NavBar/NavBar';
+import Callback from './Callback/Callback';
+import {Route, withRouter} from 'react-router-dom';
+import auth0Client from './Auth/Auth';
 
 class App extends Component {
-
-  goTo(route) {
-    this.props.history.replace(`/${route}`);
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkingSession: true,
+    }
   }
 
-  login() {
-    this.props.auth.login();
-  }
-
-  logout() {
-    this.props.auth.logout();
+  async componentDidMount() {
+    if (this.props.location.pathname === '/callback') {
+      this.setState({checkingSession:false});
+      return;
+    }
+    try {
+      await auth0Client.silentAuth();
+      this.forceUpdate();
+    } catch (err) {
+      if (err.error !== 'login_required') console.log(err.error);
+    }
+    this.setState({checkingSession:false});
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-
     return (
-      <div className="App">
-        <header className="App-header">
-          {
-            !isAuthenticated() && (
-              <div>
-              <p>
-                Welcome to Authentity!
-              </p>
-                <Button
-                  onClick={this.login.bind(this)}
-                  style={{ cursor: "pointer" }}
-                >
-                  Log In
-
-                </Button>
-              </div>
-          )}
-          {
-            isAuthenticated() && (
-              <div>
-                <Button
-                    onClick={this.goTo.bind(this, 'kba')}
-                    style={{ cursor: "pointer" }}
-                  >
-                    Process a customer
-                  </Button>
-
-                  <Button
-
-                    style={{ cursor: "pointer" }}
-                  >
-                    Profile - coming soon
-                  </Button>
-
-                  <Button
-
-                    style={{ cursor: "pointer" }}
-                  >
-                    How it works - coming soon
-                  </Button>
-
-                  <Button
-                    onClick={this.logout.bind(this)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    Log Out
-                  </Button>
-              </div>
-            )}
-
-        </header>
+      <div>
+        <NavBar/>
+        <Route exact path='/' />
+        <Route exact path='/callback' component={Callback}/>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

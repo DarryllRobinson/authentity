@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import auth0Client from '../Auth/Auth';
 import loading from './loading.svg';
 
 class Callback extends Component {
+  async componentDidMount() {
+    await auth0Client.handleAuthentication();
+    this.props.history.replace('/');
+  }
+
   render() {
     const style = {
       position: 'absolute',

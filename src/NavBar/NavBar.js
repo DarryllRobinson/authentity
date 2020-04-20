@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import auth0Client from '../Auth';
+import auth0Client from '../Auth/Auth';
 
 function NavBar(props) {
   const signOut = () => {
@@ -11,7 +11,7 @@ function NavBar(props) {
   return (
     <nav className="navbar navbar-dark bg-primary fixed-top">
       <Link className="navbar-brand" to="/">
-        Q&App
+        Authentity
       </Link>
       {
         !auth0Client.isAuthenticated() &&
