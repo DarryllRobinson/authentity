@@ -45,11 +45,7 @@ class KbaForm extends Component {
   }
 
   checkBlock(clientList, clientID) {
-    console.log('clientList: ', clientList);
-    console.log('clientID: ', clientID);
     const found = clientList.find(element => element === clientID);
-    console.log('found: ', found);
-
     if (found) { return true; }
     return false;
   }
