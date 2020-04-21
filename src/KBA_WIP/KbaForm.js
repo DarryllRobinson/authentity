@@ -33,7 +33,6 @@ class KbaForm extends Component {
   submitHandler = (event) => {
     event.preventDefault();
     const clientID = this.state.clientID;
-    //console.log('clientID:', clientID);
     this.props.onDisplayChange(true, clientID);
     this.setState({submitted: true}
     , () => {
