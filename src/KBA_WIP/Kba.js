@@ -52,16 +52,23 @@ class QuestionTable extends Component {
   render() {
     const rows = [];
     //const display = this.props.showQuestions;
-    const display = true;
+    let display = true;
+    console.log('questions: ', this.props.questions);
 
-    this.props.ideal.forEach((question) => {
-      rows.push(
-        <QuestionRow
-          question={question.question}
-          answer={question.ANSWERS}
-          key={question.authID} />
-      );
-    })
+    if (this.props.questions) {
+      this.props.ideal.forEach((question) => {
+        rows.push(
+          <QuestionRow
+            question={question.question}
+            answer={question.ANSWERS}
+            key={question.authID} />
+        );
+      });
+    } else {
+
+      display = false;
+      console.log('display: ', display);
+    }
 
     if (display) {
       return (
@@ -79,7 +86,7 @@ class QuestionTable extends Component {
       );
     }
     return (
-      <div></div>
+      <div>Error: No questions were sent from the database</div>
     );
   }
 }
@@ -104,16 +111,6 @@ class Kba extends Component {
       //checkBlock(clientID);
     });
   }
-
-  /*this.setState({
-    someState: obj
-}, () => {
-    this.afterSetStateFinished();
-});*/
-
- /*function checkBlock(clientID) {
-    return true;
-  }*/
 
   render() {
     return (

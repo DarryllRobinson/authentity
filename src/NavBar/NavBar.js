@@ -8,8 +8,8 @@ function NavBar(props) {
     props.history.replace('/');
   };
 
-  const workflow = () => {
-    props.history.replace('/workflow');
+  const kba = () => {
+    props.history.replace('/kba');
   }
 
   return (
@@ -26,7 +26,7 @@ function NavBar(props) {
         <div>
           <label className="mr-2 text-white">{auth0Client.getProfile().nickname}</label>
           <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
-          <button className="btn btn-dark" onClick={() => {workflow()}}>Process</button>
+          <button className="btn btn-dark" onClick={() => {kba()}}>Process</button>
         </div>
       }
     </nav>
