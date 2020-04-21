@@ -7,6 +7,7 @@ class KbaForm extends Component {
       firstname: '',
       surname: '',
       mobile: '',
+      clientID: 4,
       errormessage: '',
       submitted: false
     }
@@ -31,18 +32,26 @@ class KbaForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    const clientID = '1';
+    const clientID = this.state.clientID;
+    //console.log('clientID:', clientID);
     this.props.onDisplayChange(true, clientID);
     this.setState({submitted: true}
     , () => {
-      if (this.checkBlock) {
+      if (this.checkBlock(BLOCK, clientID)) {
         console.log('blocked');
       }
+      console.log('not blocked');
     });
   }
 
-  checkBlock(clientID) {
-    return true;
+  checkBlock(clientList, clientID) {
+    console.log('clientList: ', clientList);
+    console.log('clientID: ', clientID);
+    const found = clientList.find(element => element === clientID);
+    console.log('found: ', found);
+
+    if (found) { return true; }
+    return false;
   }
 
   render() {
@@ -74,8 +83,6 @@ class KbaForm extends Component {
   }
 }
 
-const BLOCK = [
-  {clientID: '1'}
-]
+const BLOCK = [1, 2, 3];
 
 export default KbaForm;

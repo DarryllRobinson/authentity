@@ -53,7 +53,6 @@ class QuestionTable extends Component {
     const rows = [];
     //const display = this.props.showQuestions;
     let display = true;
-    console.log('questions: ', this.props.questions);
 
     if (this.props.questions) {
       this.props.ideal.forEach((question) => {

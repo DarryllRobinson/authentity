@@ -31,19 +31,25 @@ class App extends Component {
         <NavBar/>
         <Route exact path='/callback' component={Callback}/>
         <SecuredRoute exact path='/kba'
-          component={Kba}
+          component={KbaComponent}
           checkingSession={this.state.checkingSession}
-
-            questions={QUESTIONS}
-            answers={ANSWERS}
-            authset={AUTHSET}
-            ideal={IDEAL}
-          
         />
         {/*<Route path='./test' component={Test}/>*/}
       </div>
     );
   }
+}
+
+const KbaComponent = (props) => {
+  return (
+    <Kba
+      questions={QUESTIONS}
+      answers={ANSWERS}
+      authset={AUTHSET}
+      ideal={IDEAL}
+      {...props}
+    />
+  );
 }
 
 const QUESTIONS = [
