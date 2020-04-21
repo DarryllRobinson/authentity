@@ -4,9 +4,17 @@ import auth0Client from './Auth/Auth';
 import NavBar from './NavBar/NavBar';
 import Callback from './Callback/Callback';
 import Workflow from './Workflow/Workflow';
+//import Test from './Workflow/test';
 import SecuredRoute from './SecuredRoute/SecuredRoute';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkingSession: true,
+    }
+  }
+
   async componentDidMount() {
     if (this.props.location.pathname === '/callback') return;
     try {
@@ -22,7 +30,11 @@ class App extends Component {
       <div>
         <NavBar/>
         <Route exact path='/callback' component={Callback}/>
-        <SecuredRoute exact path='/workflow' component={Workflow}/>
+        <SecuredRoute exact path='/workflow'
+          component={Workflow}
+          checkingSession={this.state.checkingSession}
+        />
+        {/*<Route path='./test' component={Test}/>*/}
       </div>
     );
   }

@@ -8,6 +8,10 @@ function NavBar(props) {
     props.history.replace('/');
   };
 
+  const workflow = () => {
+    props.history.replace('/workflow');
+  }
+
   return (
     <nav className="navbar navbar-dark bg-primary fixed-top">
       <Link className="navbar-brand" to="/">
@@ -22,6 +26,7 @@ function NavBar(props) {
         <div>
           <label className="mr-2 text-white">{auth0Client.getProfile().nickname}</label>
           <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
+          <button className="btn btn-dark" onClick={() => {workflow()}}>Process</button>
         </div>
       }
     </nav>
