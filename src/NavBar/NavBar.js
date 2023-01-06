@@ -25,8 +25,8 @@ function NavBar(props) {
         auth0Client.isAuthenticated() &&
         <div>
           <label className="mr-2 text-white">{auth0Client.getProfile().nickname}</label>
-          <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
           <button className="btn btn-dark" onClick={() => {kba()}}>Process</button>
+          <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
         </div>
       }
     </nav>
