@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "helmet": "^3.22.0",
-    "jwks-rsa": "^1.8.0",
+    "jwks-rsa": "^1.12.3",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
