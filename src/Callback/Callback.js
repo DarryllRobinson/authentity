@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import auth0Client from '../Auth/Auth';
 import loading from './loading.svg';
 
 class Callback extends Component {
+  async componentDidMount() {
+    await auth0Client.handleAuthentication();
+    this.props.history.replace('/');
+  }
+
   render() {
     const style = {
       position: 'absolute',
@@ -24,4 +31,4 @@ class Callback extends Component {
   }
 }
 
-export default Callback;
+export default withRouter(Callback);
